@@ -2,7 +2,9 @@
 using System;
 using System.IO;
 using System.Diagnostics;
+using System.Security.Principal;
 using System.Windows.Forms;
+
 
 namespace Library
 {
@@ -13,7 +15,15 @@ namespace Library
         // so attempting to run a command that is expecting input may result in
         // unexpected behavior.
         
-        private Process process;        
+        private Process process;
+
+        public string ProgramName
+        {
+            get
+            {
+                return this.CurrentProgramName();
+            }
+        }
 
         private ProcessStartInfo defaultStartInfo = new ProcessStartInfo() 
         {
@@ -23,6 +33,17 @@ namespace Library
             UseShellExecute = true,
             CreateNoWindow = true,
             WindowStyle = ProcessWindowStyle.Hidden,
+            Verb = "runas"
+        };
+
+        private ProcessStartInfo elevateStartInfo = new ProcessStartInfo() 
+        {
+            FileName = new object().CurrentProgramName(),
+            Arguments = string.Join(" ", Environment.GetCommandLineArgs()),            
+            WorkingDirectory = Directory.GetCurrentDirectory(),
+            UseShellExecute = true,
+            CreateNoWindow = false,
+            WindowStyle = ProcessWindowStyle.Normal,
             Verb = "runas"
         };
 
@@ -36,7 +57,7 @@ namespace Library
             {   
                 this.defaultStartInfo.Arguments = value;
             }
-        }
+        }        
 
         public bool HasExited
         {
@@ -47,14 +68,20 @@ namespace Library
         }
 
         public AdminProcess()
-        { 
+        {             
             this.process = new Process();
             this.process.StartInfo = defaultStartInfo;
         }
 
         public AdminProcess(string commandToRun) : this()
         {
-            this.CommandToRun = $"/c {commandToRun}";            
+            if (commandToRun.Equals(Environment.CommandLine))
+            {
+                this.process.StartInfo = elevateStartInfo;     
+                return;
+            }
+            else
+                this.CommandToRun = $"/c {commandToRun}";                
         }
 
         public AdminProcess(string commandToRun, Action<AdminProcess> somethingToDo) : this(commandToRun)
@@ -67,18 +94,14 @@ namespace Library
         }
 
         public AdminProcess Start()
-        {
-            if (this.CommandToRun == null)
-            {
-                throw new ArgumentNullException("CommandToRun is not set");
-            }            
+        {                   
             this.process.Start();
             return this;
         }
 
         public static AdminProcess Start(string commandToRun)
-        {
-            AdminProcess newProcess = new AdminProcess(commandToRun);
+        {            
+            AdminProcess newProcess = new AdminProcess(commandToRun);            
             newProcess.Start();
             return newProcess;        
         }
@@ -127,6 +150,27 @@ namespace Library
                 MessageBox.Show($"{ex.Message}\n{ex.StackTrace}");                
             }
             return output;        
+        }
+
+        public static bool ElevatedContext()
+        {
+            bool isElevated;
+            using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
+            {
+                WindowsPrincipal principal = new WindowsPrincipal(identity);
+                isElevated = principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            return isElevated;
+        }
+
+        public static void EnsureElevatedContext()
+        {
+            if (AdminProcess.ElevatedContext()) return;
+            string name = Process.GetCurrentProcess().ProcessName;                      
+            var elevated = new AdminProcess(Environment.CommandLine);
+            elevated.Start();
+            elevated.WaitForExit();
+            Process.GetCurrentProcess().Kill();
         }
     }
 }

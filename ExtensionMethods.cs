@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.ServiceProcess;
 using System.Security.Principal;
 using System.Text;
@@ -65,6 +67,11 @@ namespace Library
     
     public static partial class ExtensionMethods
     {   
+        public static string CurrentProgramName(this object program)
+        {
+            return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+        }
+
         private static Mutex mutex = null;
 
         public static void SingleInstance(this System.Windows.Forms.Form formApp)
@@ -93,12 +100,10 @@ namespace Library
             return s == null || s == "";
         }
 
-        public static string Join(this IEnumerable<string> strArray, string sepStr = null, char sepChar = '\n')
+        public static string Join(this IEnumerable<string> strCollection, string sepStr = null, char sepChar = '\n')
         {
-            if (sepStr == null) 
-                return String.Join($"{sepChar}", strArray);
-            else 
-                return String.Join(sepStr, strArray);
+            string separator = (sepStr == null)? $"{sepChar}" : sepStr;            
+            return string.Join(separator, strCollection.ToArray());
         }
 
         public static string NoParens(this string str)
@@ -117,8 +122,73 @@ namespace Library
             return false;            
         }
 
+        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+        {
+            if (source == null) throw new ArgumentNullException("source");
+            if (action == null) throw new ArgumentNullException("action");
+
+            foreach (T item in source)
+            {
+                action(item);
+            }
+        }
+
+        public static List<U> Map<T,U>(this IEnumerable<T> source, Func<T,U> mapFunction)
+        {
+            if (source == null) throw new ArgumentNullException("source");
+            
+            List<U> results = new List<U> ();
+
+            source.ForEach( (item) => 
+            {
+                results.Add( (U)mapFunction(item) );
+            });
+
+            return results;            
+        }
+
+        public static U ReflectProperty<T,U>(this T obj, string propertyName)
+        {
+            if (obj == null) throw new ArgumentNullException("obj");
+            if (propertyName.NullOrEmpty()) throw new ArgumentException(propertyName);
+
+            PropertyInfo prop = typeof(T).GetProperty(propertyName);
+            if (prop == null) throw new TargetException(propertyName); 
+
+            return (U)prop.GetValue(obj);
+        }
+
+        public static List<U> GetPropertyList<T,U>(this IEnumerable<T> source, string propertyName)
+        {
+            if (source == null) throw new ArgumentNullException("source");
+            if (propertyName.NullOrEmpty()) throw new ArgumentException(propertyName);
+            
+            return source.Map<T,U>( (item) => { return item.ReflectProperty<T,U>(propertyName); });            
+        }
+
+        public static List<Dictionary<string,object>> ToDictionaryList<T>(this IEnumerable<T> source, string[] properties)
+        {
+            if (source == null) throw new ArgumentNullException("source");            
+                        
+            return source.Map<T,Dictionary<string,object>>( (item) => 
+            { 
+                Dictionary<string, object> dict = new Dictionary<string,object> ();
+                properties.ForEach( (name) => 
+                {
+                    dict[name] = item.ReflectProperty<T,object>(name);
+                });
+                return dict;
+            });            
+        }
+
         private static void showMessageWithOptions(string message, string title, bool exitOption = false)
         {
+            if (Environment.UserInteractive)
+            {
+                Console.Error.WriteLine(message);
+                return;                
+            }
+
             if (exitOption)
             {
                 DialogResult result = MessageBox.Show(message, title, MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
@@ -128,6 +198,7 @@ namespace Library
                 }
             } else {
                 MessageBox.Show(message, title);
+                // new Notifier(message);
             }                  
         }
 
@@ -209,25 +280,46 @@ namespace Library
             string fileContents = "";
             try
             {
-                string localFilePath = Path.Combine(Environment.CurrentDirectory, filename);
-                // new IfDebugMsg($"{localFilePath}");
+                string localFilePath = Path.Combine(Environment.CurrentDirectory, filename);                
 
-                bool fileExists = File.Exists(localFilePath);
-                // new IfDebugMsg($"{localFilePath} found = {fileExists}");
+                bool fileExists = File.Exists(localFilePath);               
 
                 using (StreamReader r = File.OpenText(localFilePath))
                 {
-                    fileContents = r.ReadToEnd();
-                    // new IfDebugMsg($"{fileContents}");
+                    fileContents = r.ReadToEnd();                    
                 }                            
             }
             catch(Exception ex)
-            {  
-                // new IfDebugMsg($"failed to read from {filename}");          
+            {                  
                 ex.ToMessageBox($"failed to read from {filename}");
             }
 
             return fileContents;        
+        }
+
+        private static string FindIndexedProcessName(int pid) {
+            var processName = Process.GetProcessById(pid).ProcessName;
+            var processesByName = Process.GetProcessesByName(processName);
+            string processIndexdName = null;
+
+            for (var index = 0; index < processesByName.Length; index++) {
+                processIndexdName = index == 0 ? processName : processName + "#" + index;
+                var processId = new PerformanceCounter("Process", "ID Process", processIndexdName);
+                if ((int) processId.NextValue() == pid) {
+                    return processIndexdName;
+                }
+            }
+
+            return processIndexdName;
+        }
+
+        private static Process FindPidFromIndexedProcessName(string indexedProcessName) {
+            var parentId = new PerformanceCounter("Process", "Creating Process ID", indexedProcessName);
+            return Process.GetProcessById((int) parentId.NextValue());
+        }
+
+        public static Process Parent(this Process process) {
+            return FindPidFromIndexedProcessName(FindIndexedProcessName(process.Id));
         }
     }
 }

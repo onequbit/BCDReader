@@ -7,18 +7,22 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
+
 namespace App
 {
-
+    
     public class Program
     {
-        
+        [STAThread] // required for Windows Forms
         public static void Main(string[] args)
         {
             try
             {
+                new ConsoleAttached();
+                AdminProcess.EnsureElevatedContext();
+                
                 string output = AdminProcess.GetOutput("bcdedit");                
-                Console.WriteLine(output);                
+                Console.WriteLine(output);                                                      
             }
             catch (Exception ex)
             {                

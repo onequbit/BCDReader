@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="BCDReader.exe" version="1.0.0.0" publicKeyToken="952436d3de85565b" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:publisher="Alfred Aquino" asmv2:product="BCDReader" asmv2:supportUrl="https://github.com/onequbit/BCDReader" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="bcdreader" version="0.0.0.0" publicKeyToken="FB3F07732F46CE69" language="neutral" processorArchitecture="msil" />
+    <commandLine file="bcdreader.exe" parameters="" />
+  </entryPoint>
+  <co.v1:useManifestForTrust xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="4" minorVersion="10" buildNumber="0" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="bcdreader.exe" size="89600">
+      <assemblyIdentity name="bcdreader" version="0.0.0.0" publicKeyToken="FB3F07732F46CE69" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>YOMG1uqfZj+UnstC/Qi7jLxlXK4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name=".git\COMMIT_EDITMSG" size="13">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>uoVJtVagKtgEKfIRN/znc9UOQ3s=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\config" size="304">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>5g6nMPwgaXuqLi5So4J53+k0zao=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\description" size="73">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ljXxt+EsBFISgZ3ZNNgJ7wfvovQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\FETCH_HEAD" size="99">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>hOkh/oIY3YNH7nZUN+EVC7I6tIU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\HEAD" size="23">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>rLrvJ15Gp/FMHvRW//LIu+jIRyQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\applypatch-msg.sample" size="478">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>TeiOuVpek/0n54tfs7UjGo2JF90=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\commit-msg.sample" size="896">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>7h7VqtmKQ18gILbeNcFzt12a/6w=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\fsmonitor-watchman.sample" size="3327">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>98CqQMsNYg/wvKPv41Iex55dcVY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\post-update.sample" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>thTC9j2n3Knx2y563mHvMESPyWw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\pre-applypatch.sample" size="424">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>8ggofBqSUl3p9UYukFqdMd4eLXU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\pre-commit.sample" size="1638">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>M3Ka1M5RrNo1CU5YHkCI8xZ6Cvg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\prepare-commit-msg.sample" size="1492">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>JYSAa6FHFSrgBctnWqTwHV0GhFY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\pre-push.sample" size="1348">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>XIUYv9HR09LBpxlJlMChbYoxOkE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\pre-rebase.sample" size="4898">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>KI79wAJ9tM/Yt8R8Su3boJtt7RI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\pre-receive.sample" size="544">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>cFoX0lnniW8Agv4unywMOxJ75aw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\hooks\update.sample" size="3610">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>5ynNYbJ8EolR0Tnejnxj0aN1jd4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\index" size="1010">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>WIysd2ALQ739W/1Iz5pUekY5orM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\info\exclude" size="240">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>yHnfAV2XYVBQr6e5ZB4zUqHnAaw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\logs\HEAD" size="171">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>1kXi9S4PbZtYciSRzE9PZ/IUmbE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\logs\refs\heads\master" size="171">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>1kXi9S4PbZtYciSRzE9PZ/IUmbE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\logs\refs\remotes\origin\master" size="155">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Uq2hM+W2TZo+5Z2UnYT+I+aR8mw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\39\e74e510a87c03555234c75f07c1634afb696d8" size="41">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>+gti9wgkpBkARMiKKAdxL5ZG5ks=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\46\8b171b6f4117b56ff7b36229c78f61e1717335" size="1166">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>lSgTrNny782nHpQEc8QSddqPj7w=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\49\c6066a840eca7a502931bdd450d6ad25115512" size="70579">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>pM3+mwCqK3OiYCgm4iLbyd5d6ZE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\4c\ba2e220373017d900c4abd8f165f86f147ea40" size="422">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>YpPf31GmjfEtkp43/WvoVjhdXGo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\51\a9abd21621d4ce0b3f42bec5e77aa5249ee8f2" size="318">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>HXZdUf6X4nD0ikIE1IFNptmHoiw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\83\2b6f6cbca9ea7fa5c87f480152e0f833cc6c6d" size="130">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>qSnXDGhSKzBYxt5TWCp0qaJnnuE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\86\a64fc26859cd4f254c3691aaa995593acdd38c" size="2195">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>HMStCJ7s5wNhVXJL9KtGJHeqB24=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\9b\e4f2e2074010ccc0711cb2edf223bff0867c1c" size="121">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Nf5SKDbYpxrtjUIrgxWagLbjMCA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\a4\e1eacaa1bf7e3bea5bb965910d6c01a97d8579" size="219">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>sUoo7apooDT18dz2VMlU0vv44Qo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\a9\3c138b6d64c50349cc3167c7d9eb0e3db18972" size="76708">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>WEtuIU7kBQVsjVkssiVSs/qITzU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\b4\0d243973964cf82fd7ea79fee11eeda0323f28" size="239">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>345hUL7xV/MbZT/O6UAvUDo8Hsw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\c9\e3f103334a97723b2c59312b82474d4aa279a9" size="389">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Ptj/gYI/TZV4JUAQeadrXAm1WEc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\cd\2fbd1b78c6a1267dc906eecb3961d475c53666" size="357">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>zSi/nflyeu87K2xrl48/rNZZFq0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\objects\e2\3ff6cfe14f1163c6a768cd6b921bed9ab9f30e" size="135">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>IlrCh0yElS9RUcSemIqC3vJBaY4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\refs\heads\master" size="41">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>/QjbmZ6D6AME0MupbSnLxv2Swzg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name=".git\refs\remotes\origin\master" size="41">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>/QjbmZ6D6AME0MupbSnLxv2Swzg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="AdminProcess.cs" size="4181">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>q7Ro0/8A6OP/Cov3iLIMtGPZhWc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="app.manifest" size="432">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>tuOesgeOiO3XFdJS832fFLi7FDc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="bcdinfo.ps1" size="561">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>07ibqgazE3jGffDtRc3epN9nxks=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="bcdreader.cs" size="2153">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>J5Z1oklGuJYORPtkNbpk+iPBjno=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="build.cmd" size="159">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>XvbVFmmGA7yoDfidBNr1Rstw+zw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="clean.cmd" size="35">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>NvmLFVAW3RihjIFFxjSK1a9nGXk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="debug.cmd" size="173">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>IAx6/x94yshHzTtSslDwXRrMBBQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="define.cmd" size="380">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>oJ1JseYs0CmVri+rJfZQPkUbHak=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ExtensionMethods.cs" size="7988">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>6rGCCCxGODEdNDU6mcGf5qcpweg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="onequbit.ico" size="77680">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>AHDrPmRFv1fYni1tQ3vsVauoRhk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="TempFile.cs" size="1061">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>C25Sul/CtyvZ1EVEpqq1gIjh1Xw=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=IEU-ITS-XPS code signing" issuerKeyHash="5c2f3d9f66b403fd0b0bdc29fc6509cf763ee96d" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>NDl7hxZgx0xRFl7uTjQC0ARQIvM=</DigestValue></Reference></SignedInfo><SignatureValue>pJZmyZQA81VB/lF0Z7tGX9cBcb6rWmn4PjWtlc0dc29SUPh59nX4dzw2cFZwJdgKTn2GCEFNi53ZF9il5dSWGw7mj4FhSlon1x5IcaIiHgjuuTPvzgbhcqGn5hB8mLWWIU8cYvP3BrXZhZLW3Xp2YkTRi3whWCDNOb8Ah9mlO3digaLIzq9RkLZamCTgM8hXE/cFtTYyuSAn6pm+FTfRPMRt17rNUN8a1f+9xFX5E6g77xKK8dhMuLdcStvS+7s4c31XnYGeraCmAzxrs5zwNLBDGixi0f35kstxbhg/x8WKSVTPOU/NzqbWDbdCOavXjI7vtNMZV8VCAqqvNzFHRA==</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>s9MEwYQO6p5xROjh/4fsg5LD+CepvlQU32rlfDzQBqTGjzbY7nEQcY2k/5QwNyCsJh0lud7pX7SwpRwGaFXKNnUlAQSXf7WnzghtdBtNRewCmGcA9qWtMaceFV3RnuxTTwbOnZ51YJEopOe4I7DyddCSrBqoYy/NY/qDyU8PsIyhhI7wpWxHEBfgOSN7KGdmonEsXWh02vIqifz4famkT1AqmVjzRp2d0HfBzVzTm9CxCp4h8uidYaSMN/5YpJ1foRM5O23pdCD3XRVsVDuOxvFSVCSkuy7LEbX+UhRTkVMjHrHOhgEWjMPzTaMaDPAXZ40LML/nfEHvp7Wc8niHgQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="f3225004d002344eee5e16514cc76016877b3934" Description="" Url=""><as:assemblyIdentity name="BCDReader.exe" version="1.0.0.0" publicKeyToken="952436d3de85565b" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=IEU-ITS-XPS code signing</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>rWHchOcRCkKxfBY3v2Vc95IP06U=</DigestValue></Reference></SignedInfo><SignatureValue>U8mPuZfP8C7m5L3AWjgoUhzoOawhbZeW7URHTiFbkm/Q1bWF5dnYcYeYM2r8DmL87vvlyDx9sG4rmeQ3jiobgogDPuG+rr/nah4jhCRDU61szRubGA1Wmn2RQK/IcZe/VdOcHzg2BgbZP9O9WxEVMBInj2DYCvaPYyiI07CZ4CMtgytpAcL7dzZNgvKXdllLwYZyPRBqIub+RaOiR8sbeBurXrrBQX/a26jbxk9KgJnbavsukNsvADBCCXsFWxn7tLg7CUDxsB5lOWkiidcD4Y3C+r+ofawY2MLhVKGZuU8DTcbkRHiRnkmXymu6eJtlByzz2UV82J7+QfGWRfKFiA==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>s9MEwYQO6p5xROjh/4fsg5LD+CepvlQU32rlfDzQBqTGjzbY7nEQcY2k/5QwNyCsJh0lud7pX7SwpRwGaFXKNnUlAQSXf7WnzghtdBtNRewCmGcA9qWtMaceFV3RnuxTTwbOnZ51YJEopOe4I7DyddCSrBqoYy/NY/qDyU8PsIyhhI7wpWxHEBfgOSN7KGdmonEsXWh02vIqifz4famkT1AqmVjzRp2d0HfBzVzTm9CxCp4h8uidYaSMN/5YpJ1foRM5O23pdCD3XRVsVDuOxvFSVCSkuy7LEbX+UhRTkVMjHrHOhgEWjMPzTaMaDPAXZ40LML/nfEHvp7Wc8niHgQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIDLjCCAhagAwIBAgIQQrFwGPCyVphGW3UqNovA7zANBgkqhkiG9w0BAQUFADAjMSEwHwYDVQQDDBhJRVUtSVRTLVhQUyBjb2RlIHNpZ25pbmcwHhcNMjAwNTE0MTkwNTQ2WhcNMjEwNTE0MTkyNTQ2WjAjMSEwHwYDVQQDDBhJRVUtSVRTLVhQUyBjb2RlIHNpZ25pbmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCz0wTBhA7qnnFE6OH/h+yDksP4J6m+VBTfauV8PNAGpMaPNtjucRBxjaT/lDA3IKwmHSW53ulftLClHAZoVco2dSUBBJd/tafOCG10G01F7AKYZwD2pa0xpx4VXdGe7FNPBs6dnnVgkSik57gjsPJ10JKsGqhjL81j+oPJTw+wjKGEjvClbEcQF+A5I3soZ2aicSxdaHTa8iqJ/Ph9qaRPUCqZWPNGnZ3Qd8HNXNOb0LEKniHy6J1hpIw3/liknV+hEzk7bel0IPddFWxUO47G8VJUJKS7LssRtf5SFFORUyMesc6GARaMw/NNoxoM8BdnjQswv+d8Qe+ntZzyeIeBAgMBAAGjXjBcMA4GA1UdDwEB/wQEAwIHgDATBgNVHSUEDDAKBggrBgEFBQcDAzAWBgNVHREEDzANggtJRVUtSVRTLVhQUzAdBgNVHQ4EFgQUXC89n2a0A/0LC9wp/GUJz3Y+6W0wDQYJKoZIhvcNAQEFBQADggEBAGN2oyAObaO6QJUC2pB1VBTje2tpAG++a1UVaURCKuIIdiuUSOTT1C1jiu4v4/TDPzuU+FuI4LtTPdwCzuTm/Ex5ihB5hyRcSTqgOkfyNiZwI7n/oK9SiSVyx5Czsb591/7dhgClTFk33s9dgN/3URIgaB5ZbNMATRaKigf0lxY1y9IT3P5FMWW2bqO1bOhtLrNH1X8+8xBGPyb6S3WJH7hC7LxHsbJlqhL72cS4q+qXpOu8zhNuT6mY9dRpWeomNn+bP7Ty8sdbLu0t1nSkaADDgmtqWXwePmUUVn0gX5cbdIX/WeYpV0HWdn+y/PCRkWYa1LlIHMzD/HpgQrQLGDI=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
