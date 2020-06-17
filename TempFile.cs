@@ -7,6 +7,14 @@ namespace Library
     {
         private string path;
 
+        public string Path
+        {
+            get
+            {
+                return this.path;
+            }
+        }
+
         public TempFile()
         {
             this.path = System.IO.Path.GetTempFileName();
@@ -43,6 +51,24 @@ namespace Library
                 catch { } // best effort
                 path = null;
             }
+        }
+
+        public string GetContents()
+        {
+            string fileContents = "";
+            try
+            {
+                bool fileExists = File.Exists(this.path);               
+                using (StreamReader r = File.OpenText(this.path))
+                {
+                    fileContents = r.ReadToEnd();                    
+                }                            
+            }
+            catch(Exception ex)
+            {                  
+                ex.ToMessageBox($"failed to read from {this.path}");
+            }
+            return fileContents; 
         }
     }
 }

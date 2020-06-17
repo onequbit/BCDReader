@@ -24,5 +24,13 @@ namespace Library
         [DllImport("kernel32.dll", EntryPoint = "FlushConsoleInputBuffer")]        
         public static extern bool FlushConsoleInputBuffer( int hConsoleInput );
         
+        
+    }
+
+    public class User32
+    {
+        [DllImport("user32", EntryPoint = "SetForegroundWindow")]
+		public static extern int SetForegroundWindow(int hwnd);
+        
     }
 }

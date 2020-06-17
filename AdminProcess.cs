@@ -17,6 +17,8 @@ namespace Library
         
         private Process process;
 
+        private TempFile tempFile;
+
         public string ProgramName
         {
             get
@@ -67,14 +69,15 @@ namespace Library
             }
         }
 
-        public AdminProcess()
-        {             
+        // public AdminProcess()
+        // {             
+            
+        // }
+
+        public AdminProcess(string commandToRun)
+        {
             this.process = new Process();
             this.process.StartInfo = defaultStartInfo;
-        }
-
-        public AdminProcess(string commandToRun) : this()
-        {
             if (commandToRun.Equals(Environment.CommandLine))
             {
                 this.process.StartInfo = elevateStartInfo;     
@@ -84,14 +87,14 @@ namespace Library
                 this.CommandToRun = $"/c {commandToRun}";                
         }
 
-        public AdminProcess(string commandToRun, Action<AdminProcess> somethingToDo) : this(commandToRun)
-        {
-            using (var disposable = this)
-            {
-                this.Start();
-                somethingToDo(disposable);
-            }           
-        }
+        // public AdminProcess(string commandToRun, Action<AdminProcess> somethingToDo) : this(commandToRun)
+        // {
+        //     using (var disposable = this)
+        //     {
+        //         this.Start();
+        //         somethingToDo(disposable);
+        //     }           
+        // }
 
         public AdminProcess Start()
         {                   
@@ -99,12 +102,12 @@ namespace Library
             return this;
         }
 
-        public static AdminProcess Start(string commandToRun)
-        {            
-            AdminProcess newProcess = new AdminProcess(commandToRun);            
-            newProcess.Start();
-            return newProcess;        
-        }
+        // public static AdminProcess Start(string commandToRun)
+        // {            
+        //     AdminProcess newProcess = new AdminProcess(commandToRun);            
+        //     newProcess.Start();
+        //     return newProcess;        
+        // }
 
         public void WaitForExit()
         {
@@ -130,26 +133,25 @@ namespace Library
             this.process.Dispose();
         }
 
-        public static string GetOutput(string commandToRun)
-        {            
+        public string GetOutput()
+        {
             string output = "";
             try
             {
-                new TempFile( (tempfile) => 
+                using (this.tempFile = new TempFile())                
                 {
-                    new AdminProcess( $"{commandToRun} > {tempfile}", (process) =>
-                    {
-                        process.WaitForExit();                
-                        while (!process.HasExited) { } 
-                    });                    
-                    output = tempfile.ReadFileAsString();                    
-                });               
+                    this.CommandToRun = $"{this.CommandToRun} > {this.tempFile.Path}";
+                    process.Start();
+                    process.WaitForExit();                
+                    while (!process.HasExited) { } 
+                    output = this.tempFile.GetContents();                
+                }
             }
             catch (Exception ex)
             {                
                 MessageBox.Show($"{ex.Message}\n{ex.StackTrace}");                
             }
-            return output;        
+            return output; 
         }
 
         public static bool ElevatedContext()
@@ -165,8 +167,7 @@ namespace Library
 
         public static void EnsureElevatedContext()
         {
-            if (AdminProcess.ElevatedContext()) return;
-            string name = Process.GetCurrentProcess().ProcessName;                      
+            if (AdminProcess.ElevatedContext()) return;            
             var elevated = new AdminProcess(Environment.CommandLine);
             elevated.Start();
             elevated.WaitForExit();

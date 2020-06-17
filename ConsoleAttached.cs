@@ -11,14 +11,7 @@ namespace Library
     {                       
 
         public ConsoleAttached()
-        {
-            new IfDebug( () =>
-            {
-                string message = $"Environment.UserInteractive: {Environment.UserInteractive}";
-                MessageBox.Show(message);
-                new Notifier(message);     
-            });
-            
+        {                        
             Kernel32.AttachConsole(Kernel32.ATTACH_PARENT_PROCESS);            
         }
         

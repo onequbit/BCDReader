@@ -14,57 +14,6 @@ using System.Windows.Forms;
 namespace Library
 {
 
-    public class IfDebug
-    {
-        public IfDebug(Action debugAction)
-        {
-            #if DEBUG
-            debugAction();
-            #endif
-        }
-
-        public IfDebug(object something)
-        {
-            #if DEBUG   
-            new IfDebugMsg(something.ToString());
-            #endif
-        }
-    }
-
-    public class IfDebugMsg
-    {
-        public IfDebugMsg(string message)
-        {
-            #if DEBUG            
-            DialogResult result = MessageBox.Show(message, "DEBUG", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-            if (result == DialogResult.Cancel)
-            {
-                Environment.Exit(-1);
-            }
-            #endif
-        }
-
-        public IfDebugMsg(string[] messageArray)
-        {
-            #if DEBUG
-            List<string> messageBlock = new List<string>{};
-            string newMessage = "";
-            foreach(string message in messageArray)
-            {                    
-                messageBlock.Add(message);
-                if (messageBlock.Count >= 25)
-                {
-                    newMessage = messageBlock.ToArray().Join("\n");
-                    new IfDebugMsg(newMessage);                    
-                    messageBlock.Clear();
-                }
-            }
-            newMessage = messageBlock.ToArray().Join("\n");
-            new IfDebugMsg(newMessage);
-            #endif
-        }
-    }
-    
     public static partial class ExtensionMethods
     {   
         public static string CurrentProgramName(this object program)
@@ -197,8 +146,7 @@ namespace Library
                     Environment.Exit(-1);
                 }
             } else {
-                MessageBox.Show(message, title);
-                // new Notifier(message);
+                MessageBox.Show(message, title);                
             }                  
         }
 
@@ -290,10 +238,17 @@ namespace Library
                 }                            
             }
             catch(Exception ex)
-            {                  
-                ex.ToMessageBox($"failed to read from {filename}");
+            {   
+                try
+                {
+                    ex.ToMessageBox($"failed to read from {filename}");
+                }
+                catch
+                {
+                    Console.WriteLine($"failed to read from {filename}");
+                }
+                throw;                
             }
-
             return fileContents;        
         }
 
@@ -320,6 +275,60 @@ namespace Library
 
         public static Process Parent(this Process process) {
             return FindPidFromIndexedProcessName(FindIndexedProcessName(process.Id));
+        }
+
+        public static (T,T[]) Pop<T>(this T[] arr)
+        {
+            if (arr.Length == 0)
+                throw new ArgumentOutOfRangeException();
+            if (arr.Length == 1)
+            {
+                return (arr[0], new T[0]);
+            }
+            return (arr[0], new ArraySegment<T>(arr, 1, arr.Length-1).ToArray());
+        }
+
+        public static void ToConsole(this string str)
+        {
+            Console.WriteLine(str);            
+        }
+
+        public static void ToConsole(this IEnumerable<string> strArray, bool indexed = false)
+        {
+            if (indexed)
+            {
+                for (int i=0; i < strArray.Count(); i++)
+                {
+                    Console.WriteLine($"{i}:{strArray.ElementAt(i)}");
+                }                
+            }
+            else
+            {
+                strArray.ForEach( (str) => 
+                {
+                    if (str.Length > 0) str.ToConsole();
+                });
+            }            
+        }
+
+        public static List<string> ToLower(this IEnumerable<string> strArray)
+        {
+            List<string> lowerCase = new List<string>();
+            strArray.ForEach( (str) => 
+            {
+                lowerCase.Append(str.ToLower());
+            });
+            return lowerCase;
+        }
+
+        public static string[] Normalize(this string[] paths, Func<string,string> normalize)
+        {
+            string[] normalized = new string[paths.Length];
+            for (int i=0; i<paths.Length; i++)
+            {
+                normalized[i] = normalize(paths[i]);
+            }
+            return normalized;
         }
     }
 }
