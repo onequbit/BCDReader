@@ -231,7 +231,7 @@ namespace App
         {            
             try
             {   
-                string bcdInfo = Lib.GetPseudoCmdOutput("bcdedit /enum /v");                
+                string bcdInfo = Lib.GetAdminCmdOutput("bcdedit /enum /v");                
                 var objs = BcdObject.ParseCollection(bcdInfo);
                 
                 Console.WriteLine($"{objs.Count} objects parsed");
