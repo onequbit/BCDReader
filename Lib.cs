@@ -78,26 +78,30 @@ namespace Library
                 if (path.Trim().Length > 3)
                     paths.Add(path);
             }
-            return paths.ToArray();                
+            paths.Add(Environment.CurrentDirectory);
+            envPaths = paths.ToArray();
+            Array.Reverse(envPaths);
+            return envPaths;                
         }
 
-        public static string SearchEnvPathsFor(string filename)
+        public static bool SearchEnvPathsFor(string filename, out string foundPath)
         {   
-            string[] paths = Lib.GetEnvPaths();
-            Array.Reverse(paths);
+            string[] paths = Lib.GetEnvPaths();            
             foreach(string path in paths)
             {
                 try
                 {                    
                     string[] found = Lib.CmdWhere(path, filename);
-                    if (found.Length > 0)                    
+                    if (found.Length > 0 && found[0].Trim().Length > 3)                    
                     {                        
-                        return found[0];
+                        foundPath = found[0].Trim();
+                        return true;
                     }                                        
                 }                
                 catch {}
             }            
-            return "";
+            foundPath = "";
+            return false;
         }
 
     }

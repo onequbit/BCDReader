@@ -6,4 +6,7 @@ csc -define:DEBUG %compileoptions% %buildfiles%
 if %errorlevel% neq 0 exit /b %errorlevel%
 del keyfile.snk
 call signit.cmd
-%outfile%
+@echo on
+%outfile% pseudo.exe
+%outfile% pseudo2.exe
+
