@@ -1,0 +1,23 @@
+
+bool flightsigning
+bool flightsigning
+bool recoveryenabled
+Guid default
+Guid identifier
+Guid inherit
+Guid resumeobject
+Guid[] displayorder
+Guid[] recoverysequence
+Guid[] toolsdisplayorder
+int timeout
+string allowedinmemorysettings
+string bootmenupolicy
+string description
+string device
+string displaymessageoverride
+string hypervisorlaunchtype
+string locale
+string nx
+string osdevice
+string path
+string systemroot
